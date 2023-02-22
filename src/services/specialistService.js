@@ -39,16 +39,19 @@ let handleSaveSpecialist = (data) => {
 
 let getAllSpecialist = (limit) => {
     return new Promise(async (resolve, reject) => {
+        // console.log(limit);
         try {
             let data = await db.Specialty.findAll({
                 limit: +limit,
             });
 
+            console.log(data);
             data = data.map((item) => {
                 return { ...item, image: Buffer.from(item.image).toString('binary') };
             });
             resolve({ errCode: 0, message: 'Create specialist successful', data });
         } catch (e) {
+            // console.log(e);
             reject({ errCode: -1, message: 'Errow from server' });
         }
     });
