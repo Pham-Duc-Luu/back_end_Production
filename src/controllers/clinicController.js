@@ -1,4 +1,4 @@
-import clinicService from '../services/clinicService';
+import clinicService from '../services/ClinicService';
 
 let handleSaveClinic = async (req, res) => {
     try {
