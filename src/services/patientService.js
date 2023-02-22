@@ -52,7 +52,7 @@ let handleCreatePatientExamination = (data) => {
                 resolve({ errCode: 1, message: 'Missing parameter' });
             }
         } catch (e) {
-            console.log(e);
+            // console.log(e);
             reject({ errCode: 1, message: 'Missing parameter' });
         }
     });
@@ -76,7 +76,7 @@ let handleVerifyBooking = (data) => {
                 resolve({ errCode: 1, message: 'Missing parameter!' });
             }
         } catch (e) {
-            console.log(e);
+            // console.log(e);
             reject({ errCode: -1, message: 'Errow from server' });
         }
     });

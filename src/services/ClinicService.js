@@ -31,7 +31,7 @@ let handleSaveClinic = async (data) => {
 
             resolve({ errCode: 0, message: 'Create specialist successful' });
         } catch (e) {
-            console.log(e);
+            // console.log(e);
             reject({ errCode: -1, message: 'Errow from server' });
         }
     });
@@ -50,7 +50,7 @@ let handleGetAllClinic = (limit) => {
             // console.log(data);
             resolve({ errCode: 0, data });
         } catch (e) {
-            console.log(e);
+            // console.log(e);
             reject({ errCode: -1, message: 'Errow from server' });
         }
     });
@@ -101,7 +101,7 @@ let getDoctorBelongToClinic = (id) => {
 
             resolve({ errCode: 0, data });
         } catch (e) {
-            console.log(e);
+            // console.log(e);
             reject({ errCode: -1, message: 'Errow from server' });
         }
     });
@@ -117,7 +117,7 @@ let getClinic = (id) => {
             data.image = Buffer.from(data.image).toString('binary');
             resolve({ errCode: 0, data });
         } catch (e) {
-            console.log(e);
+            // console.log(e);
             reject({ errCode: -1, message: 'Errow from server' });
         }
     });
@@ -158,7 +158,7 @@ let getAllBooking = ({ id, date }) => {
 
             resolve({ errCode: 0, data });
         } catch (e) {
-            console.log(e);
+            // console.log(e);
             reject({ errCode: -1, message: 'Errow from server' });
         }
     });
@@ -186,7 +186,7 @@ let saveBookingStatus = (data) => {
                 resolve({ errCode: 1, message: 'Missing parameter' });
             }
         } catch (e) {
-            console.log(e);
+            // console.log(e);
             reject({ errCode: -1, message: 'Errow from server' });
         }
     });

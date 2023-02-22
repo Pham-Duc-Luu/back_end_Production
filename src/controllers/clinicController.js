@@ -8,7 +8,7 @@ let handleSaveClinic = async (req, res) => {
             data,
         });
     } catch (e) {
-        console.log(e);
+        //console.log(e);
         return res.status(200).json({
             errCode: -1,
             message: 'Errow from server',
@@ -25,7 +25,7 @@ let handleGetAllClinic = async (req, res) => {
         let data = await clinicService.handleGetAllClinic(limit);
         return res.status(200).json(data);
     } catch (e) {
-        console.log(e);
+        //console.log(e);
         return res.status(200).json({
             errCode: -1,
             message: 'Errow from server',
@@ -41,7 +41,7 @@ let getDoctorBelongToClinic = async (req, res) => {
         // console.log(data);
         return res.status(200).json(data);
     } catch (e) {
-        console.log(e);
+        //console.log(e);
 
         return res.status(200).json({
             errCode: -1,
@@ -58,7 +58,7 @@ let getClinic = async (req, res) => {
         // console.log(data);
         return res.status(200).json(data);
     } catch (e) {
-        console.log(e);
+        //console.log(e);
 
         return res.status(200).json({
             errCode: -1,
@@ -75,7 +75,7 @@ let getAllBooking = async (req, res) => {
         // console.log(data);
         return res.status(200).json(data);
     } catch (e) {
-        console.log(e);
+        //console.log(e);
 
         return res.status(200).json({
             errCode: -1,
@@ -89,7 +89,7 @@ let saveBookingStatus = async (req, res) => {
         let data = await clinicService.saveBookingStatus(req.body);
         return res.status(200).json(data);
     } catch (e) {
-        console.log(e);
+        //console.log(e);
 
         return res.status(200).json({
             errCode: -1,

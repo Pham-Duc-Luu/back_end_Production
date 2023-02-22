@@ -2,9 +2,9 @@ var bcrypt = require('bcryptjs');
 import db from '../models/index';
 import _ from 'lodash';
 require('dotenv').config();
-
+const { Op } = require('sequelize');
 const salt = bcrypt.genSaltSync(10);
-
+const Sequelize = require('sequelize');
 let getDoctorInfo = (limit) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -138,10 +138,10 @@ let saveDetailInfoDoctor = (data) => {
 let getDoctorDetail = (id) => {
     return new Promise(async (resolve, reject) => {
         try {
+            console.log(id);
             let data = await db.User.findOne({
                 where: { id: id },
                 attributes: { exclude: ['password'] },
-
                 // attributes: ['id', 'email', 'firstName', 'lastName'],
                 include: [
                     {
@@ -171,9 +171,7 @@ let getDoctorDetail = (id) => {
             let price;
             let province;
 
-            let AllCode = await db.Allcode.findAll();
-
-            // console.log(AllCode);
+            let AllCode = await db.Allcode.findAll({});
 
             if (data.Doctor_infor) {
                 let { paymentId, priceId, provinceId } = data.Doctor_infor;
@@ -184,6 +182,7 @@ let getDoctorDetail = (id) => {
 
             data.image = Buffer.from(data.image).toString('binary');
 
+            // console.log(data);
             if (data) {
                 resolve({ data, errCode: 0 });
             } else {
@@ -210,8 +209,8 @@ let savedoctorSchedule = (data) => {
                 });
             }
 
-            let scheduleData = await db.schedule.findAll({
-                where: { date: currArr[0].date, doctorId: currArr[0].doctorId },
+            let scheduleData = await db.Schedule.findAll({
+                where: { date: ' ' + currArr[0].date, doctorId: currArr[0].doctorId },
                 attributes: ['maxNumber', 'date', 'timeType', 'doctorId'],
                 raw: true,
             });
@@ -231,7 +230,7 @@ let savedoctorSchedule = (data) => {
                 return { ...item, date: item.date };
             });
 
-            let response = await db.schedule.bulkCreate(createArray, { raw: true });
+            let response = await db.Schedule.bulkCreate(createArray, { raw: true });
 
             if (response) {
                 resolve({ errCode: 0, message: 'Create schedule successful' });
@@ -250,7 +249,7 @@ let handleGetDoctorScheduleById = (data) => {
             let { id, date } = data;
 
             if (id && date) {
-                let response = await db.schedule.findAll({
+                let response = await db.Schedule.findAll({
                     where: { doctorId: +id, date },
                     include: [{ model: db.Allcode, as: 'timeTypeData', attributes: ['valueEn', 'valueVi'] }],
                     raw: true,
@@ -277,7 +276,7 @@ let handleGetDoctorScheduleById = (data) => {
                 resolve({ errCode: 1, message: 'Missing parameter' });
             }
         } catch (e) {
-            console.log(e);
+            // console.log(e);
             reject(e);
         }
     });

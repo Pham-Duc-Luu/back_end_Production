@@ -7,7 +7,7 @@ let handleSaveSpecialist = async (req, res) => {
         console.log(data);
         return res.status(200).json(data);
     } catch (e) {
-        console.log(e);
+        // console.log(e);
 
         res.status(200).json({
             errCode: -1,
@@ -26,7 +26,7 @@ let getAllSpecialist = async (req, res) => {
         // console.log(data);
         return res.status(200).json(data);
     } catch (e) {
-        console.log(e);
+        // console.log(e);
 
         return res.status(200).json({
             errCode: -1,
@@ -43,7 +43,7 @@ let getDoctorBelongToSpecialist = async (req, res) => {
         // console.log(data);
         return res.status(200).json(data);
     } catch (e) {
-        console.log(e);
+        // console.log(e);
 
         return res.status(200).json({
             errCode: -1,
@@ -60,7 +60,7 @@ let getSpecialist = async (req, res) => {
         // console.log(data);
         return res.status(200).json(data);
     } catch (e) {
-        console.log(e);
+        // console.log(e);
 
         return res.status(200).json({
             errCode: -1,

@@ -9,7 +9,7 @@ module.exports = {
                 type: Sequelize.INTEGER,
             },
             doctorId: {
-                type: Sequelize.STRING,
+                type: Sequelize.INTEGER,
             },
 
             specialistId: {
