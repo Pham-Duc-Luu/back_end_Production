@@ -44,11 +44,9 @@ let handleSendEmail = async (data) => {
         // Gửi email
         let info = await transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
-                // console.log(error);
                 reject({ errCode: -1 });
             }
 
-            // console.log('Message sent: %s', info.messageId);
             resolve(data);
         });
     });

@@ -8,7 +8,6 @@ let handleSaveClinic = async (req, res) => {
             data,
         });
     } catch (e) {
-        //console.log(e);
         return res.status(200).json({
             errCode: -1,
             message: 'Errow from server',
@@ -25,7 +24,6 @@ let handleGetAllClinic = async (req, res) => {
         let data = await clinicService.handleGetAllClinic(limit);
         return res.status(200).json(data);
     } catch (e) {
-        //console.log(e);
         return res.status(200).json({
             errCode: -1,
             message: 'Errow from server',
@@ -38,11 +36,8 @@ let getDoctorBelongToClinic = async (req, res) => {
         let id = req.query.id;
 
         let data = await clinicService.getDoctorBelongToClinic(id);
-        // console.log(data);
         return res.status(200).json(data);
     } catch (e) {
-        //console.log(e);
-
         return res.status(200).json({
             errCode: -1,
             message: 'Errow from server',
@@ -55,11 +50,8 @@ let getClinic = async (req, res) => {
         let id = req.query.id;
 
         let data = await clinicService.getClinic(id);
-        // console.log(data);
         return res.status(200).json(data);
     } catch (e) {
-        //console.log(e);
-
         return res.status(200).json({
             errCode: -1,
             message: 'Errow from server',
@@ -72,11 +64,8 @@ let getAllBooking = async (req, res) => {
         let { id, time } = req.query;
 
         let data = await clinicService.getAllBooking(req.query);
-        // console.log(data);
         return res.status(200).json(data);
     } catch (e) {
-        //console.log(e);
-
         return res.status(200).json({
             errCode: -1,
             message: 'Errow from server',
@@ -89,8 +78,6 @@ let saveBookingStatus = async (req, res) => {
         let data = await clinicService.saveBookingStatus(req.body);
         return res.status(200).json(data);
     } catch (e) {
-        //console.log(e);
-
         return res.status(200).json({
             errCode: -1,
             message: 'Errow from server',

@@ -98,11 +98,9 @@ let handleGetUserInfo = (id) => {
 };
 
 let createNewUser = (data) => {
-    // console.log(data);
     return new Promise(async (resolve, reject) => {
         try {
             let existUser = await checkExistUser(data.email);
-            // console.log(existUser);
             if (existUser) {
                 resolve({
                     errCode: 2,
@@ -166,7 +164,6 @@ let deleteUserById = (id) => {
 };
 
 let updateUserData = (data) => {
-    // console.log(data);
     return new Promise(async (resolve, reject) => {
         try {
             let user = await db.User.findOne({
@@ -198,7 +195,6 @@ let updateUserData = (data) => {
 };
 
 let getAllcodeService = (type) => {
-    // console.log(type);
     return new Promise(async (resolve, reject) => {
         try {
             let data = {};
@@ -211,8 +207,6 @@ let getAllcodeService = (type) => {
                     data.data = res;
                     data.errCode = 2;
                 } else {
-                    // console.log(res)
-
                     data.data = res;
                     data.errCode = 0;
                 }

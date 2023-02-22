@@ -32,7 +32,6 @@ let handleSaveSpecialist = (data) => {
 
             resolve({ errCode: 0, message: 'Create specialist successful' });
         } catch (e) {
-            // console.log(e);
             reject({ errCode: -1, message: 'Errow from server' });
         }
     });
@@ -48,10 +47,8 @@ let getAllSpecialist = (limit) => {
             data = data.map((item) => {
                 return { ...item, image: Buffer.from(item.image).toString('binary') };
             });
-            // console.log(data);
             resolve({ errCode: 0, message: 'Create specialist successful', data });
         } catch (e) {
-            // console.log(e);
             reject({ errCode: -1, message: 'Errow from server' });
         }
     });
@@ -102,7 +99,6 @@ let getDoctorBelongToSpecialist = (id) => {
 
             resolve({ errCode: 0, data });
         } catch (e) {
-            // console.log(e);
             reject({ errCode: -1, message: 'Errow from server' });
         }
     });
@@ -119,7 +115,6 @@ let getSpecialist = (id) => {
 
             resolve({ errCode: 0, data });
         } catch (e) {
-            // console.log(e);
             reject({ errCode: -1, message: 'Errow from server' });
         }
     });

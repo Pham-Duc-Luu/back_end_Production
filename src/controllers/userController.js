@@ -3,7 +3,6 @@ import userService from '../services/userService';
 let handleLogin = async (req, res) => {
     let userEmail = req.body.email;
     let userPassword = req.body.password;
-    // console.log(user);
     if (!userEmail || !userPassword) {
         return res.status(500).json({
             errCode: 1,
@@ -40,15 +39,12 @@ let handleGetUserInfo = async (req, res) => {
 let handleCreateUser = async (req, res) => {
     let data = await userService.createNewUser(req.body);
 
-    // console.log(data);
     return res.status(200).json({
         ...data,
     });
 };
 
 let handleDeleteUserInfo = async (req, res) => {
-    // console.log(req);
-
     if (req.body.id) {
         let response = await userService.deleteUserById(req.body.id);
         return res.status(200).json({
@@ -71,7 +67,6 @@ let handleUpdateUser = async (req, res) => {
 
 let getAllcode = async (req, res) => {
     try {
-        // console.log(req.query);
         let type = req.query.type;
 
         let data = await userService.getAllcodeService(type);

@@ -53,7 +53,6 @@ let getAllDoctor = () => {
 
 let saveDetailInfoDoctor = (data) => {
     return new Promise(async (resolve, reject) => {
-        console.log(data);
         try {
             if (
                 data.contentHTML &&
@@ -67,7 +66,6 @@ let saveDetailInfoDoctor = (data) => {
                     where: { doctorId: data.doctorId },
                     raw: false,
                 });
-                // console.log(isExist);
 
                 if (isExist) {
                     isExist.contentHTML = data.contentHTML;
@@ -138,7 +136,6 @@ let saveDetailInfoDoctor = (data) => {
 let getDoctorDetail = (id) => {
     return new Promise(async (resolve, reject) => {
         try {
-            console.log(id);
             let data = await db.User.findOne({
                 where: { id: id },
                 attributes: { exclude: ['password'] },
@@ -182,14 +179,12 @@ let getDoctorDetail = (id) => {
 
             data.image = Buffer.from(data.image).toString('binary');
 
-            // console.log(data);
             if (data) {
                 resolve({ data, errCode: 0 });
             } else {
                 resolve({ data, errCode: 2 });
             }
         } catch (e) {
-            console.log(e);
             reject(e);
         }
     });
@@ -256,8 +251,6 @@ let handleGetDoctorScheduleById = (data) => {
                     nest: true,
                 });
 
-                // console.log(data);
-                // console.log(response);
                 if (response && response.length > 0) {
                     resolve({
                         errCode: 0,
@@ -276,7 +269,6 @@ let handleGetDoctorScheduleById = (data) => {
                 resolve({ errCode: 1, message: 'Missing parameter' });
             }
         } catch (e) {
-            // console.log(e);
             reject(e);
         }
     });

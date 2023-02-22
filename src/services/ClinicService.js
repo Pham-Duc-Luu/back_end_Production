@@ -31,7 +31,6 @@ let handleSaveClinic = async (data) => {
 
             resolve({ errCode: 0, message: 'Create specialist successful' });
         } catch (e) {
-            // console.log(e);
             reject({ errCode: -1, message: 'Errow from server' });
         }
     });
@@ -47,10 +46,8 @@ let handleGetAllClinic = (limit) => {
             data = data.map((item) => {
                 return { ...item, image: Buffer.from(item.image).toString('binary') };
             });
-            // console.log(data);
             resolve({ errCode: 0, data });
         } catch (e) {
-            // console.log(e);
             reject({ errCode: -1, message: 'Errow from server' });
         }
     });
@@ -101,7 +98,6 @@ let getDoctorBelongToClinic = (id) => {
 
             resolve({ errCode: 0, data });
         } catch (e) {
-            // console.log(e);
             reject({ errCode: -1, message: 'Errow from server' });
         }
     });
@@ -117,7 +113,6 @@ let getClinic = (id) => {
             data.image = Buffer.from(data.image).toString('binary');
             resolve({ errCode: 0, data });
         } catch (e) {
-            // console.log(e);
             reject({ errCode: -1, message: 'Errow from server' });
         }
     });
@@ -130,7 +125,6 @@ let getAllBooking = ({ id, date }) => {
                 resolve({ errCode: 1, message: 'Missing parameter' });
             }
 
-            // console.log(id, date);
             let data = await db.Booking.findAll({
                 where: {
                     doctorId: +id,
@@ -158,7 +152,6 @@ let getAllBooking = ({ id, date }) => {
 
             resolve({ errCode: 0, data });
         } catch (e) {
-            // console.log(e);
             reject({ errCode: -1, message: 'Errow from server' });
         }
     });
@@ -167,7 +160,6 @@ let getAllBooking = ({ id, date }) => {
 let saveBookingStatus = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
-            // console.log(data);
             if (data.id) {
                 let booking = await db.Booking.findOne({
                     where: {
@@ -186,7 +178,6 @@ let saveBookingStatus = (data) => {
                 resolve({ errCode: 1, message: 'Missing parameter' });
             }
         } catch (e) {
-            // console.log(e);
             reject({ errCode: -1, message: 'Errow from server' });
         }
     });

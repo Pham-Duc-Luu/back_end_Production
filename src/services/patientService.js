@@ -8,7 +8,6 @@ let handleCreatePatientExamination = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
             let { email, doctorId } = data;
-            // console.log(data);
             if (email && doctorId) {
                 let [response, created] = await db.User.findOrCreate({
                     where: { email },
@@ -17,7 +16,6 @@ let handleCreatePatientExamination = (data) => {
                         roleId: 'R3',
                     },
                 });
-                // console.log(response);
 
                 let { id } = response;
                 let emailRes = await emailService.handleSendEmail(data);
@@ -34,15 +32,11 @@ let handleCreatePatientExamination = (data) => {
                     },
                     raw: false,
                 });
-                // console.log(patient);
-
                 // if (patient.token === data.token && patient.doctorId === data.doctorId) {
                 //     patient.statuId = 'S2';
                 //     await patient.save();
                 // } else {
-                //     console.log(123);
                 //     data.token = '';
-                //     console.log(data.token);
                 //     patient.token = data.token;
                 //     await patient.save();
                 // }
@@ -52,7 +46,6 @@ let handleCreatePatientExamination = (data) => {
                 resolve({ errCode: 1, message: 'Missing parameter' });
             }
         } catch (e) {
-            // console.log(e);
             reject({ errCode: 1, message: 'Missing parameter' });
         }
     });
@@ -61,7 +54,6 @@ let handleCreatePatientExamination = (data) => {
 let handleVerifyBooking = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
-            console.log(data);
             if (data.token && data.doctorId) {
                 let booking = await db.Booking.findOne({
                     where: { doctorId: data.doctorId },
@@ -76,7 +68,6 @@ let handleVerifyBooking = (data) => {
                 resolve({ errCode: 1, message: 'Missing parameter!' });
             }
         } catch (e) {
-            // console.log(e);
             reject({ errCode: -1, message: 'Errow from server' });
         }
     });

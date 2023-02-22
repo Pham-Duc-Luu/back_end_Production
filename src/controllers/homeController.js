@@ -5,13 +5,8 @@ let getHomePage = async (req, res) => {
     try {
         let data = await db.User.findAll();
 
-        // console.log('-----------------');
-        // console.log(data);
-        // console.log('------------------');
         return res.render('homePage.ejs', { data: JSON.stringify(data) });
-    } catch (e) {
-        // console.log(e);
-    }
+    } catch (e) {}
 };
 
 let getCRUD = (req, res) => {
@@ -20,14 +15,11 @@ let getCRUD = (req, res) => {
 
 let postCRUD = async (req, res) => {
     let message = await CRUDservice.createNewUser(req.body);
-    // console.log(req.body);
-    // console.log(message);
     return res.send('posted');
 };
 
 let displayGetCRUD = async (req, res) => {
     let data = await CRUDservice.getAllUser();
-    // console.log(data);
     return res.render('displayGetCRUD.ejs', { data });
 };
 
@@ -36,7 +28,6 @@ let editCRUD = async (req, res) => {
 
     if (userId) {
         let userData = await CRUDservice.getUserInfoById(userId);
-        // console.log(userData);
         // send user data to view
         return res.render('editCRUD.ejs', { userData });
     } else {
